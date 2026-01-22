@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0; url=https://jazzy-lazy-cafe.github.io/ai-magazine/">
+    <link rel="canonical" href="https://jazzy-lazy-cafe.github.io/ai-magazine/" />
+    <title>Jazzy Lazy AI - Deep talks, easy vibes</title>
+    <meta name="description" content="AI 인사이트를 편안한 호기심으로 만나는 곳">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            background: linear-gradient(to bottom, #0f0e1a 0%, #1a1825 50%, #0f0e1a 100%);
+            color: #f5f1e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Spotlight effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70vh;
+            background: radial-gradient(
+                ellipse 80% 60% at 50% 0%,
+                rgba(212, 165, 116, 0.25) 0%,
+                rgba(212, 165, 116, 0.15) 30%,
+                rgba(139, 74, 74, 0.1) 50%,
+                transparent 70%
+            );
+            pointer-events: none;
+            z-index: 0;
+            animation: spotlight-on 2s ease-out forwards;
+        }
+
+        @keyframes spotlight-on {
+            0% {
+                opacity: 0;
+                transform: scaleY(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+        /* Noise overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 700px;
+            padding: 60px 40px;
+            position: relative;
+            z-index: 1;
+            animation: fade-in 1s ease-out;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            font-style: italic;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #f5f1e8;
+        }
+
+        .tagline {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-style: italic;
+            color: #d4a574;
+            letter-spacing: 0.05em;
+            margin-bottom: 40px;
+        }
+
+        .description {
+            font-size: clamp(0.85rem, 1.5vw, 1rem);
+            color: #a89f8d;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .redirect-message {
+            font-size: 0.9rem;
+            color: #8b7355;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #d4a574;
+            color: #0f0e1a;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            border: 2px solid #d4a574;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #d4a574;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: #d4a574;
+            margin: 40px auto;
+            opacity: 0.6;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(212, 165, 116, 0.2);
+            border-top-color: #d4a574;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            .cta-button {
+                padding: 14px 32px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Jazzy Lazy AI</h1>
+        <p class="tagline">Deep talks, easy vibes</p>
+        <div class="divider"></div>
+        <p class="description">
+            AI 인사이트를 편안한 호기심으로 만나는 곳
+        </p>
+        <p class="redirect-message">
+            매거진으로 이동 중<span class="spinner"></span>
+        </p>
+        <a href="https://jazzy-lazy-cafe.github.io/ai-magazine/" class="cta-button">
+            Enter Magazine
+        </a>
+    </div>
+
+    <script>
+        // Redirect after 2 seconds (gives users time to see the page)
+        setTimeout(function() {
+            window.location.href = 'https://jazzy-lazy-cafe.github.io/ai-magazine/';
+        }, 2000);
+    </script>
+</body>
+</html>
